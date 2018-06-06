@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         LottieAnimationView lottieAnimationView = findViewById(R.id.lottieAnimationView);
         lottieAnimationView.setAnimation("giftbox.json");
-        lottieAnimationView.setRepeatCount(3);
+        lottieAnimationView.setRepeatCount(1);
         lottieAnimationView.setRepeatMode(ValueAnimator.RESTART);
         lottieAnimationView.playAnimation();
         lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
