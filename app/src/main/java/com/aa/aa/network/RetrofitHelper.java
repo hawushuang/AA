@@ -2,7 +2,11 @@ package com.aa.aa.network;
 
 import android.content.Context;
 
+import com.aa.aa.App;
 import com.google.gson.GsonBuilder;
+
+import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -14,27 +18,33 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitHelper {
-    private OkHttpClient client = new OkHttpClient();
-    private GsonConverterFactory factory = GsonConverterFactory.create(new GsonBuilder().create());
-    private static RetrofitHelper instance = null;
-    private Retrofit mRetrofit = null;
+    private volatile static RetrofitHelper instance;
+    private Retrofit mRetrofit;
 
     public static RetrofitHelper getInstance() {
         if (instance == null) {
-            instance = new RetrofitHelper();
+            synchronized (RetrofitHelper.class) {
+                if (instance == null) {
+                    instance = new RetrofitHelper();
+                }
+            }
         }
         return instance;
     }
 
     private RetrofitHelper() {
-        init();
-    }
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(12, TimeUnit.SECONDS)
+                .writeTimeout(12, TimeUnit.SECONDS)
+//                .addNetworkInterceptor(new NetworkInterceptor())
+//                .addInterceptor(loggingInterceptor)
+//                .cache(cache)
+                .build();
 
-    private void init() {
         mRetrofit = new Retrofit.Builder()
                 .baseUrl("https://api.douban.com/v2/")
                 .client(client)
-                .addConverterFactory(factory)
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
