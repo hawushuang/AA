@@ -1,11 +1,5 @@
 package com.aa.aa.network;
 
-import android.content.Context;
-
-import com.aa.aa.App;
-import com.google.gson.GsonBuilder;
-
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;

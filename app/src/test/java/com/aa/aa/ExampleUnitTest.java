@@ -2,12 +2,18 @@ package com.aa.aa;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 import static org.junit.Assert.assertEquals;
@@ -25,27 +31,20 @@ public class ExampleUnitTest {
 
     @Test
     public void test() {
-        Observable.timer(5, TimeUnit.SECONDS)
-                .observeOn(Schedulers.single())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<Long>() {
+        Observable.just(1, 2, 3)
+                .flatMap(new Function<Integer, ObservableSource<String>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
+                    public ObservableSource<String> apply(@NonNull Integer integer) throws Exception {
+                        List<String> list = new ArrayList<>();
+                        for (int i = 0; i < 3; i++) {
+                            list.add("I am value " + integer);
+                        }
+                        return Observable.fromIterable(list);
                     }
-
+                })
+                .subscribe(new Consumer<String>() {
                     @Override
-                    public void onNext(Long aLong) {
-                        System.out.println("next:" + aLong);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
+                    public void accept(@NonNull String s) throws Exception {
 
                     }
                 });

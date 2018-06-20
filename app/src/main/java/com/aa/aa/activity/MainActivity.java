@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
                 mFragments[3],
                 mFragments[4]
         );
-        PageNavigationView pageBottomTabLayout = (PageNavigationView) findViewById(R.id.tab);
+        PageNavigationView pageBottomTabLayout = findViewById(R.id.tab);
 
 //        NavigationController mNavigationController = pageBottomTabLayout.material()
 //                .addItem(R.drawable.ic_ondemand_video_black_24dp, "AAAA", Color.RED)
@@ -72,8 +72,8 @@ public class MainActivity extends BaseActivity {
             }
         });
         //设置消息数
-        mNavigationController.setMessageNumber(1, 8);
-        mNavigationController.setMessageNumber(2, 10);
+        mNavigationController.setMessageNumber(3, 8);
+        mNavigationController.setMessageNumber(4, 10);
 
         //设置显示小圆点
         mNavigationController.setHasMessage(0, true);
