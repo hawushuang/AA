@@ -7,3 +7,9 @@
 /build
 /captures
 .externalNativeBuild
+/.idea/misc.xml
+/app/src/test/java/com/aa/aa/ExampleUnitTest.java
+/app/src/androidTest/java/com/aa/aa/ExampleInstrumentedTest.java
+.idea/vcs.xml
+app/libs/
+fragmentation_core/.gitignore
