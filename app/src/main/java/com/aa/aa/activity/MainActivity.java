@@ -53,11 +53,11 @@ public class MainActivity extends BaseActivity {
 //                .setDefaultColor(Color.WHITE)//未选中状态的颜色
 //                .build();
         NavigationController mNavigationController = pageBottomTabLayout.custom()
-                .addItem(newItem(R.drawable.ic_ondemand_video_black_24dp, R.drawable.ic_ondemand_video_black_24dp, "aaa"))
-                .addItem(newItem(R.drawable.ic_home_black_24dp, R.drawable.ic_home_black_24dp, "bbb"))
+                .addItem(newItem(R.drawable.ic_recovery, R.drawable.ic_recovery_checked, "aaa"))
+                .addItem(newItem(R.drawable.ic_recovery, R.drawable.ic_recovery_checked, "bbb"))
                 .addItem(newRoundItem(R.drawable.ic_recovery, R.drawable.ic_recovery_checked, "ccc"))
-                .addItem(newItem(R.drawable.ic_dashboard_black_24dp, R.drawable.ic_dashboard_black_24dp, "ddd"))
-                .addItem(newItem(R.drawable.ic_dashboard_black_24dp, R.drawable.ic_dashboard_black_24dp, "eee"))
+                .addItem(newItem(R.drawable.ic_recovery, R.drawable.ic_recovery_checked, "ddd"))
+                .addItem(newItem(R.drawable.ic_recovery, R.drawable.ic_recovery_checked, "eee"))
                 .build();
         mNavigationController.setSelect(defaultPosition);
         mNavigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
